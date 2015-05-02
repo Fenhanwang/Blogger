@@ -1,8 +1,14 @@
 <H1><%= @article.title %></H1>
+<p>
+	Tags
+	<% @article.tags.each do |tag| %>
+		<%= link_to tag.name, tag_path(tag) %>
+	<% end %>
+</p>
 <P><%= @article.body %></P>
 <h3>Comments (<%= @article.comments.size %>)</h3>
 
-<%= render partial: "articles/comment", collection: @article.comments  %>
+<%= render partial: "articles/comment", collection: @article.comments %>
 <%= render partial: 'comments/form' %>
 
 <%= link_to "<<< Go back to article list", articles_path %>
