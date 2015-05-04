@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <H1><%= @article.title %></H1>
 <p>
 	Tags
@@ -17,3 +18,4 @@
 <%= link_to "<<< Go back to article list", articles_path %>
 <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
 <%= link_to "Edit", edit_article_path(@article)%>
+<% end %>
