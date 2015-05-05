@@ -1,11 +1,52 @@
-<H1>All Articles</H1>
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="height:600px; background-image: url('img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Fen Blog</h1>
+                    <hr class="small">
+                    <span class="subheading">Write your life down</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        	<% @articles.each do |article| %>
+            <div class="post-preview">
+                <a href="<%= article_path(article) %>">
+                    <h2 class="post-title">
+                        <%= article.title %>
+                    </h2>
+                    <!-- <h3 class="post-subtitle">
+                        Small Problem
+                    </h3> -->
+                </a>
+                <p class="post-meta">Posted by <a href="#">Fenhan</a> on <%= article.created_at.to_date %></p>
+            </div>
+            <% end %>
+            <!-- Pager -->
+            <ul class="pager">
+                <li class="next">
+                    <a href="#">Older Posts &rarr;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 
 <ul id="articles">
-	<% @articles.each do |article| %>
+	
 		<li>
-			<%= link_to article.title, article_path(article) %>
+			<%#= link_to article.title, article_path(article) %>
 		</li>
-	<% end %>		
 </ul>
 
 <% if logged_in? %>

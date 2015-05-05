@@ -12,6 +12,7 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
+	<% if flash.notice %><div class="col-ml-12"><p><%= flash.notice %></p></div><% end %>
 	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header page-scroll">
@@ -39,6 +40,12 @@
                     <li>
                         <a href="contact.html">Contact</a>
                     </li>
+                    <% if logged_in? %>
+						<li><%= "Logged in as #{current_user.email}" %></li>
+						<li><%= link_to "Logout", logout_path %></li>
+					<% else %>
+						<li><%= link_to "Login", login_path %></li>
+					<% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -46,65 +53,10 @@
         <!-- /.container -->
 	</nav>
 
-	<!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="height:600px; background-image: url('img/home-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Fen's Blog</h1>
-                        <hr class="small">
-                        <span class="subheading">Write your life down</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+	
 
-
-	<!-- <div id="container">
-		<div id="content">
-			<p class="flash"><%= flash.notice %></p>
-			<%#= yield %>
-			<hr>
-			<h6>
-				<% if logged_in? %>
-					<%= "Logged in as #{current_user.email}" %>
-					<%= link_to "(logout)", logout_path %>
-				<% else %>
-					<%= link_to "(login)", login_path %>
-				<% end %>
-			</h6>
-		</div>
-	</div> -->
-
-	<!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Man must explore, and this is exploration at its greatest
-                        </h2>
-                        <h3 class="post-subtitle">
-                            Problems look mighty small from 150 miles up
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
-                </div>
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <hr>
+	<%= yield %>
+	
 
 
 
