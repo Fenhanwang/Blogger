@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem "paperclip"
 gem 'sorcery'
+gem "font-awesome-rails"
 # gem 'strong_parameters'
 
 # To use ActiveModel has_secure_password

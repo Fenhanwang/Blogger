@@ -12,9 +12,13 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-	<% if flash.notice %><div class="col-ml-12"><p><%= flash.notice %></p></div><% end %>
 	<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
 		<div class="container-fluid">
+				<% if flash.alert || flash.notice %>
+					<div id="flash" class="alert alert-<%= flash[:classparams] %> col-ml-12" role="alert" >
+						<%= flash.alert ? flash.alert : flash.notice %>
+					</div>
+				<% end %>
 			<div class="navbar-header page-scroll">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
@@ -23,6 +27,7 @@
 					<span class="icon-bar"></span>	
 				</button>
 				<a class="navbar-brand" href="index.html">Start Blogger</a>
+				
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,7 +49,8 @@
 						<li><%= "Logged in as #{current_user.email}" %></li>
 						<li><%= link_to "Logout", logout_path %></li>
 					<% else %>
-						<li><%= link_to "Login", login_path %></li>
+						<!-- <li><%= link_to "Login", login_path %></li> -->
+						<li><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#loginModal">sign in</button></li>
 					<% end %>
                 </ul>
             </div>
@@ -96,5 +102,40 @@
             </div>
         </div>
     </footer>
+
+
+<% unless logged_in? %>
+<!--login modal-->
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h1 class="text-center">Login</h1>
+      </div>
+      <div class="modal-body">
+      <%= form_tag author_sessions_path, { method: :post, class: "form col-md-12 center-block"} do %>
+          <div class="form-group">
+            <%= text_field_tag :email, nil, { class: "form-control input-lg", placeholder: "Email" } %>
+          </div>
+          <div class="form-group">
+            <%= text_field_tag :password, nil, { class: "form-control input-lg", placeholder: "Password" } %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag "Sign In", class: "btn btn-primary btn-lg btn-block" %>
+            <span class="pull-right"><a href="#">Register</a></span><span><%= link_to 'Back', articles_path %></span>
+          </div>
+      <% end %>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
 </body>
 </html>

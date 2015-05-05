@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require cleanblog
+//= require documentReady
 //= require_tree .
