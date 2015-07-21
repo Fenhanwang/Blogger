@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0'
 gem 'rails', '4.1.9'
 
 # Bundle edge Rails instead:
@@ -13,6 +13,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,7 +37,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'passenger'
 
 # Deploy with Capistrano
 # gem 'capistrano'
