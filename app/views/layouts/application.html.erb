@@ -46,7 +46,7 @@
                         <a href="contact.html">Contact</a>
                     </li>
                     <% if logged_in? %>
-						<li><%= "Logged in as #{current_user.email}" %></li>
+						<li><a href="#" style="color: Yellow;"><%= "Logged in as #{current_user.email}" %></a></li>
 						<li><%= link_to "Logout", logout_path %></li>
 					<% else %>
 						<!-- <li><%= link_to "Login", login_path %></li> -->
@@ -119,7 +119,7 @@
             <%= text_field_tag :email, nil, { class: "form-control input-lg", placeholder: "Email" } %>
           </div>
           <div class="form-group">
-            <%= text_field_tag :password, nil, { class: "form-control input-lg", placeholder: "Password" } %>
+            <%= password_field :password, nil, { class: "form-control input-lg", placeholder: "Password" } %>
           </div>
           <div class="form-group">
             <%= submit_tag "Sign In", class: "btn btn-primary btn-lg btn-block" %>
