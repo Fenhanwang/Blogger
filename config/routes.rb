@@ -1,7 +1,6 @@
 Blogger::Application.routes.draw do
-  resources :pages
-
   root to: 'articles#index'
+  resources :pages
   resources :articles do 
     resources :comments
   end
