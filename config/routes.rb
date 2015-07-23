@@ -1,5 +1,6 @@
 Blogger::Application.routes.draw do
-  root to: 'articles#index'
+  root to: 'homes#index'
+  resources :homes, only: [:index]
   resources :pages
   resources :articles do 
     resources :comments
