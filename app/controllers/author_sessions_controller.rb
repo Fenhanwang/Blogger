@@ -1,6 +1,10 @@
 class AuthorSessionsController < ApplicationController
 	def new
-		
+		respond_to do |format|
+			# format.html { redirect_to(person_list_url) }
+			format.js
+			# format.xml  { render xml: @person.to_xml(include: @company) }
+		end
 	end
 
 	def create
