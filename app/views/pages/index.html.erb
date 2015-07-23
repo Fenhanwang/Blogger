@@ -1,27 +1,7 @@
-<h1>Listing pages</h1>
+<div class="jumbotron" id="Fenhanjumbotron-Pages"style="background-color: #c0e9ff; margin-bottom:0px;">
+  <div class="container">
+    <h2 style="background-color: #FFFFFF;">Enjon the life and fill in the form</h2>
+  </div>
+</div>
+<iframe id="Fenhaniframe-pages" src="https://docs.google.com/forms/d/1Ccs9sr1AHywcumvID8-hKPZR61RLcw70Qwi87Bf92Fs/viewform?embedded=true" scrolling="no" seamless="seamless" height="1600" frameborder="0" marginheight="0" marginwidth="0">It is loading.正在加载...</iframe>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pages.each do |page| %>
-      <tr>
-        <td><%= page.title %></td>
-        <td><%= page.body %></td>
-        <td><%= link_to 'Show', page %></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Page', new_page_path %>
