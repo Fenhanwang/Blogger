@@ -1,0 +1,22 @@
+<h1>Listing smart_trippers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @smart_trippers.each do |smart_tripper| %>
+      <tr>
+        <td><%= link_to 'Show', smart_tripper %></td>
+        <td><%= link_to 'Edit', edit_smart_tripper_path(smart_tripper) %></td>
+        <td><%= link_to 'Destroy', smart_tripper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Smart tripper', new_smart_tripper_path %>

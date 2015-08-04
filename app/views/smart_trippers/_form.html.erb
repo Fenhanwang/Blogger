@@ -1,0 +1,24 @@
+<%= simple_form_for(@smart_tripper, html: { class: 'form-horizontal' }) do |f| %>
+  <% if @smart_tripper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@smart_tripper.errors.count, "error") %> prohibited this smart_tripper from being saved:</h2>
+
+      <ul>
+      <% @smart_tripper.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="col-md-3 col-xs-12">
+    <%= f.input :last_four_phone_number, label: "Phone Number", as: :integer, input_html: {maxlength: 4} %>
+    </div>
+    <div class="col-md-10 col-md-offset-0 col-xs-12 ">
+    <%= f.input :metro_card_img, label:"Metro Card", as: :file %>
+    </div>
+    <div class="col-md-6 col-xs-12" style="padding-left: 0px">
+    </br>
+      <%= f.button :submit %>
+    </div>
+<% end %>

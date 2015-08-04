@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509212239) do
+ActiveRecord::Schema.define(version: 20150730021150) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 20150509212239) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "smart_trippers", force: true do |t|
+    t.integer  "last_four_phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "metro_card_img_file_name"
+    t.string   "metro_card_img_content_type"
+    t.integer  "metro_card_img_file_size"
+    t.datetime "metro_card_img_updated_at"
   end
 
   create_table "taggings", force: true do |t|
